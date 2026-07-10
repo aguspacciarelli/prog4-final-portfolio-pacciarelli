@@ -1,0 +1,52 @@
+{
+  "cards": [
+    {
+      "image": "https://picsum.photos/seed/aurora/600/750",
+      "titulo": "MaimoConecta",
+      "subtitulo": "Branding · 2024",
+      "cuerpo": "Identidad visual completa para una marca de cosmética natural.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    },
+    {
+      "image": "https://picsum.photos/seed/nimbus/600/750",
+      "titulo": "Nimbus",
+      "subtitulo": "UX/UI · 2024",
+      "cuerpo": "App de clima con foco en accesibilidad y microinteracciones.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    },
+    {
+      "image": "https://picsum.photos/seed/terra/600/750",
+      "titulo": "Terra",
+      "subtitulo": "Dirección creativa · 2023",
+      "cuerpo": "Campaña integral para una ONG de reforestación urbana.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    },
+    {
+      "image": "https://picsum.photos/seed/lumen/600/750",
+      "titulo": "Lumen",
+      "subtitulo": "Web design · 2023",
+      "cuerpo": "Sitio institucional para un estudio de arquitectura minimalista.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    },
+    {
+      "image": "https://picsum.photos/seed/vento/600/750",
+      "titulo": "Vento",
+      "subtitulo": "Branding · 2023",
+      "cuerpo": "Naming e identidad para una marca de indumentaria deportiva.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    },
+    {
+      "image": "https://picsum.photos/seed/coral/600/750",
+      "titulo": "Coral",
+      "subtitulo": "Experiencia digital · 2022",
+      "cuerpo": "Museo virtual interactivo sobre biodiversidad marina.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    }
+  ]
+}

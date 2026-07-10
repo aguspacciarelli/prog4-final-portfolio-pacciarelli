@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colores */
+  --color-blanco: #fafafa;
+  --color-negro: #121112;
+  --color-gris-oscuro: #525252;
+  --color-gris-medio: #7b7b7b;
+  --color-gris-claro: #bababa;
+  --color-verde-confirm: #00d47f;
+  --color-rojo-error: #ff3737;
+  --font-sans: "Instrument Sans", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    font-variation-settings: "wdth" 100;
+    letter-spacing: -0.05em;
+  }
+}
+
+@utility boton-principal {
+  @apply bg-negro text-blanco font-medium rounded-full border-0 outline-none;
+}
+
+@utility titulos-secciones {
+  @apply text-gris-oscuro text-center text-[28px] font-medium
+}

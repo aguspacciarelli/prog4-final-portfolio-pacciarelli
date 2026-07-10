@@ -1,0 +1,9 @@
+{
+  "nombre": "Agustina Pacciarelli",
+  "profesion": "Estudiante de Programación",
+  "proyectos": [
+    { "id": 1, "titulo": "Proyecto uno", "descripcion": "Descripción del proyecto uno." },
+    { "id": 2, "titulo": "Proyecto dos", "descripcion": "Descripción del proyecto dos." },
+    { "id": 3, "titulo": "Proyecto tres", "descripcion": "Descripción del proyecto tres." }
+  ]
+}

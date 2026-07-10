@@ -1,0 +1,206 @@
+---
+import galeria from "@/data/galeria.json";
+
+interface Card {
+  image: string;
+  titulo: string;
+  subtitulo: string;
+  cuerpo: string;
+  boton: string;
+  link: string;
+}
+
+interface Props {
+  cards?: Card[];
+}
+
+const { cards = galeria.cards } = Astro.props;
+---
+
+<div
+  data-card-carousel
+  tabindex="0"
+  role="region"
+  aria-label="Galería de proyectos. Usá las flechas izquierda y derecha para navegar."
+  class="relative -mx-20 h-[600px] cursor-grab touch-pan-y overflow-hidden select-none [&.dragging]:cursor-grabbing"
+>
+  {
+    cards.map((card) => (
+      <article class="card group absolute top-8 left-1/2 w-[280px] will-change-transform [&.is-active]:z-10">
+        <img
+          src={card.image}
+          alt={card.titulo}
+          class="aspect-[4/5] w-full rounded-2xl object-cover grayscale transition-[filter] duration-700 ease-out group-[.is-active]:grayscale-0"
+        />
+
+        <div class="pointer-events-none mt-5 flex w-full flex-col gap-2 opacity-0 transition-opacity duration-700 ease-out group-[.is-active]:pointer-events-auto group-[.is-active]:opacity-100">
+          <h3 class="text-2xl font-medium">{card.titulo}</h3>
+          <p class="text-[15px] text-gris-medio">{card.subtitulo}</p>
+          <p class="text-[15px] leading-5.5 text-gris-oscuro">{card.cuerpo}</p>
+          <a
+            href={card.link}
+            class="boton-principal mt-1 self-start px-5 py-1.5 text-[16px]"
+          >
+            {card.boton}
+          </a>
+        </div>
+      </article>
+    ))
+  }
+</div>
+
+<script>
+  const CARD_W = 280;
+  const GAP = 45;
+  const W = CARD_W + GAP;
+  const BEND = 70;
+
+  function lerp(a: number, b: number, t: number) {
+    return a + (b - a) * t;
+  }
+
+  function debounce(fn: () => void, wait: number) {
+    let t: number;
+    return () => {
+      clearTimeout(t);
+      t = window.setTimeout(fn, wait);
+    };
+  }
+
+  document
+    .querySelectorAll<HTMLElement>("[data-card-carousel]")
+    .forEach((root) => {
+      const baseCards = Array.from(root.querySelectorAll<HTMLElement>(".card"));
+      if (!baseCards.length) return;
+
+      // Clonar cards hasta cubrir de sobra el ancho de pantalla, para que el loop infinito nunca deje huecos en los bordes.
+      const coverage = Math.max(window.innerWidth, 2560) * 2;
+      while (root.querySelectorAll(".card").length * W < coverage) {
+        baseCards.forEach((c) => root.appendChild(c.cloneNode(true)));
+      }
+
+      const cards = Array.from(root.querySelectorAll<HTMLElement>(".card"));
+      const N = cards.length;
+      const total = N * W;
+
+      const scroll = { current: 0, target: 0, ease: 0.07 };
+      // Arrancar con una card destacada en el centro (no en un borde).
+      const startIndex = Math.floor(baseCards.length / 2);
+      scroll.current = scroll.target = startIndex * W;
+
+      let activeEl: HTMLElement | null = null;
+
+      function render() {
+        scroll.current = lerp(scroll.current, scroll.target, scroll.ease);
+
+        // Arco de círculo: radio grande derivado de la caída `BEND` en el borde.
+        const H = window.innerWidth / 2;
+        const R = (H * H + BEND * BEND) / (2 * BEND);
+
+        let best: HTMLElement | null = null;
+        let bestDist = Infinity;
+
+        for (let i = 0; i < N; i++) {
+          const card = cards[i];
+          let x = i * W - scroll.current;
+          // Envolver la posición al rango [-total/2, total/2] → efecto infinito.
+          x = x - total * Math.round(x / total);
+          const dist = Math.abs(x);
+
+          // Posición sobre el arco: cae y rota un poco al alejarse del centro.
+          const ex = Math.min(dist, H);
+          const y = R - Math.sqrt(R * R - ex * ex);
+          const angle = Math.sign(x) * Math.asin(ex / R) * (180 / Math.PI);
+
+          // Escala continua: la card del centro es la más grande (fluidez).
+          const s = 0.85 + (1 - Math.min(dist / W, 1)) * 0.15;
+          card.style.transform = `translate(calc(-50% + ${x}px), ${y}px) rotate(${angle}deg) scale(${s})`;
+
+          if (dist < bestDist) {
+            bestDist = dist;
+            best = card;
+          }
+        }
+
+        if (best && best !== activeEl) {
+          activeEl?.classList.remove("is-active");
+          best.classList.add("is-active");
+          activeEl = best;
+        }
+
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
+
+      const snap = () => {
+        scroll.target = Math.round(scroll.target / W) * W;
+      };
+      const snapDebounced = debounce(snap, 120);
+
+      // Rueda: solo respondemos a gestos horizontales (no toma el scroll vertical de la página).
+      root.addEventListener(
+        "wheel",
+        (e) => {
+          if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+          e.preventDefault();
+          scroll.target += e.deltaX;
+          snapDebounced();
+        },
+        { passive: false },
+      );
+
+      // Arrastre con mouse o touch.
+      let down = false;
+      let startX = 0;
+      let startTarget = 0;
+      let moved = false;
+      root.addEventListener("pointerdown", (e) => {
+        down = true;
+        moved = false;
+        startX = e.clientX;
+        startTarget = scroll.target;
+        root.classList.add("dragging");
+        root.setPointerCapture(e.pointerId);
+      });
+      root.addEventListener("pointermove", (e) => {
+        if (!down) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 4) moved = true;
+        scroll.target = startTarget - dx;
+      });
+      const up = () => {
+        if (!down) return;
+        down = false;
+        root.classList.remove("dragging");
+        snap(); // al soltar, se desliza suave hasta centrar
+      };
+      root.addEventListener("pointerup", up);
+      root.addEventListener("pointercancel", up);
+
+      // Flechas del teclado.
+      root.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          scroll.target += W;
+          snap();
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          scroll.target -= W;
+          snap();
+        }
+      });
+
+      // Si hubo arrastre, no dispares el click del botón.
+      root.addEventListener(
+        "click",
+        (e) => {
+          if (moved) {
+            e.preventDefault();
+            e.stopPropagation();
+            moved = false;
+          }
+        },
+        true,
+      );
+    });
+</script>
