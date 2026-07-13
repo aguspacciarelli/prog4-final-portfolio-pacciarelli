@@ -13,7 +13,7 @@ var POST = async ({ request }) => {
 	try {
 		const { nombre, apellido, mail, servicio, descripcion } = await request.json();
 		if (!nombre || !apellido || !mail || !descripcion) return new Response(JSON.stringify({ error: "Faltan campos obligatorios." }), { status: 400 });
-		const { error } = await new Resend("re_MoPiWNtv_NAg4dZUyju2p57MEmAstpE4d").emails.send({
+		const { error } = await new Resend({RESEND_API_KEY}).emails.send({
 			from: "Portfolio <onboarding@resend.dev>",
 			to: DESTINO,
 			replyTo: mail,
