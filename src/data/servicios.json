@@ -1,0 +1,56 @@
+{
+  "servicios": [
+    {
+      "id": 1,
+      "imagen": "https://picsum.photos/seed/uxui/600/750",
+      "titulo": "UX / UI Design",
+      "subtitulo": "Diseño mobile y web",
+      "tituloItems": "Incluye:",
+      "items": [
+        "Auditoría UX",
+        "Research y definición de usuarios",
+        "Arquitectura de información",
+        "Wireframes y flujos de navegación",
+        "Diseño visual de interfaz (UI)",
+        "Prototipo navegable",
+        "Entrega lista para desarrollo"
+      ],
+      "tituloDescripcion": "Es para:",
+      "descripcion": "Para clientes con una app, plataforma, sitio web o producto digital que quieren mejorar o comenzar a construir desde cero."
+    },
+    {
+      "id": 2,
+      "imagen": "https://picsum.photos/seed/branding/600/750",
+      "titulo": "Branding",
+      "subtitulo": "Diseño de marca",
+      "tituloItems": "Incluye:",
+      "items": [
+        "Naming (de ser necesario)",
+        "Dirección creativa",
+        "Diseño de logo e identidad visual",
+        "Paleta de colores",
+        "Tipografía",
+        "Aplicaciones de marca",
+        "Manual de marca"
+      ],
+      "tituloDescripcion": "Es para:",
+      "descripcion": "Negocios nuevos o marcas existentes que necesitan renovarse, diferenciarse o construir una identidad sólida."
+    },
+    {
+      "id": 3,
+      "imagen": "https://picsum.photos/seed/personalizado/600/750",
+      "titulo": "Personalizado",
+      "subtitulo": "Algo diferente :)",
+      "tituloItems": "Otras cosas interesantes que sé hacer:",
+      "items": [
+        "Desarrollo Front-End",
+        "Modelado 3D en Blender",
+        "Edición de videos y fotos",
+        "Piezas para redes sociales y otro tipo de piezas de diseño gráfico digital",
+        "Diseño editorial"
+      ],
+      "tituloDescripcion": "",
+      "descripcion": "Cada proyecto es distinto y me gusta tratarlo así. Si tenés algo en mente pero todavía no estás seguro de cómo definirlo, escribime y lo pensamos juntos. <3"
+    }
+  ]
+}

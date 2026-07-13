@@ -1,0 +1,123 @@
+---
+const isbns = [
+  "9780465050659", // El diseño de las cosas cotidianas
+  "9788433998064", // Las cosas que perdimos en el fuego
+  "9788433908063", // La hermana menor
+  "9788433998248", // Los peligros de fumar en la cama
+  "9789505113644", // Mujeres argentinas
+  "9786073179096", // Mujercitas
+  "978-9871138135", // El amor en tiempos de cólera
+  "9788432248368", // El túnel
+  
+];
+
+let libros: any[] = [];
+try {
+  const bibkeys = isbns.map((isbn) => "ISBN:" + isbn).join(",");
+  const respuesta = await fetch(
+    "https://openlibrary.org/api/books?bibkeys=" +
+      bibkeys +
+      "&format=json&jscmd=data",
+  );
+  const data = await respuesta.json();
+  libros = isbns.map((isbn) => data["ISBN:" + isbn]).filter(Boolean);
+} catch (e) {
+  console.error("No se pudieron cargar los libros de Open Library:", e);
+}
+---
+
+{/* Botón con los libros */}
+<button
+  id="libros-toggle"
+  class="group absolute -bottom-15 -left-6 z-10 hidden cursor-pointer lg:block"
+>
+  <div class="flex items-end transition-transform duration-300 group-hover:-translate-y-1">
+    <img
+      src={libros[0]?.cover?.medium ?? libros[0]?.cover?.large}
+      alt={libros[0]?.title}
+      class="w-20 -rotate-6 rounded"
+    />
+    <img
+      src={libros[1]?.cover?.medium ?? libros[1]?.cover?.large}
+      alt={libros[1]?.title}
+      class="-ml-6 w-20 rotate-15 rounded"
+    />
+  </div>
+</button>
+
+{/* Modal */}
+<div
+  id="libros-modal"
+  class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-negro/50 p-6 backdrop-blur-sm"
+>
+  <div
+    class="relative max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-blanco p-8 shadow-xl"
+  >
+    <button
+      id="libros-close"
+      type="button"
+      aria-label="Cerrar"
+      class="absolute top-4 right-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-gris-oscuro hover:bg-gris-claro/40"
+    >
+      ✕
+    </button>
+
+    <h3 class="mb-1 text-2xl font-medium">Easter Egg: Mis libros favoritos!</h3>
+    <p class="mb-6 text-gris-medio text-[1.125rem]">
+      Algunas cosas que leí y me marcaron mucho :)
+    </p>
+
+    <ul
+      class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-6 p-0"
+    >
+      {
+        libros.map((libro) => (
+          <li>
+            <a
+              href={libro.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col gap-2 text-inherit no-underline"
+            >
+              <img
+                src={libro.cover?.large ?? libro.cover?.medium}
+                alt={libro.title}
+                loading="lazy"
+                class="w-full rounded-lg"
+              />
+              <span class="font-semibold leading-5">{libro.title}</span>
+              <span class="text-gris-medio">
+                {libro.authors?.[0]?.name}
+              </span>
+              {libro.number_of_pages && (
+                <span class="text-gris-medio">
+                  {libro.number_of_pages} páginas
+                </span>
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById("libros-toggle");
+  const modal = document.getElementById("libros-modal");
+  const close = document.getElementById("libros-close");
+
+  const abrir = () => modal?.classList.remove("hidden");
+  const cerrar = () => modal?.classList.add("hidden");
+
+  toggle?.addEventListener("click", abrir);
+  close?.addEventListener("click", cerrar);
+  // Cerrar al hacer click en el fondo (fuera de la tarjeta).
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) cerrar();
+  });
+  // Cerrar con Escape.
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") cerrar();
+  });
+</script>

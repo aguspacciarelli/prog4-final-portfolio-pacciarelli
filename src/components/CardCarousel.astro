@@ -1,9 +1,10 @@
 ---
-import galeria from "@/data/galeria.json";
+import { proyectos } from "@/data/proyectos.json";
 
 interface Card {
   image: string;
   titulo: string;
+  fecha: string;
   subtitulo: string;
   cuerpo: string;
   boton: string;
@@ -14,7 +15,7 @@ interface Props {
   cards?: Card[];
 }
 
-const { cards = galeria.cards } = Astro.props;
+const { cards = proyectos } = Astro.props;
 ---
 
 <div
@@ -22,7 +23,7 @@ const { cards = galeria.cards } = Astro.props;
   tabindex="0"
   role="region"
   aria-label="Galería de proyectos. Usá las flechas izquierda y derecha para navegar."
-  class="relative -mx-20 h-[600px] cursor-grab touch-pan-y overflow-hidden select-none [&.dragging]:cursor-grabbing"
+  class="relative -mx-6 h-[500px] lg:h-[620px] cursor-grab touch-pan-y overflow-hidden select-none md:-mx-12 lg:-mx-30 [&.dragging]:cursor-grabbing"
 >
   {
     cards.map((card) => (
@@ -30,15 +31,17 @@ const { cards = galeria.cards } = Astro.props;
         <img
           src={card.image}
           alt={card.titulo}
-          class="aspect-[4/5] w-full rounded-2xl object-cover grayscale transition-[filter] duration-700 ease-out group-[.is-active]:grayscale-0"
+          draggable="false"
+          class="aspect-[4/5] w-full rounded-2xl object-cover grayscale transition-[filter] duration-700 ease-out select-none group-[.is-active]:grayscale-0"
         />
 
         <div class="pointer-events-none mt-5 flex w-full flex-col gap-2 opacity-0 transition-opacity duration-700 ease-out group-[.is-active]:pointer-events-auto group-[.is-active]:opacity-100">
           <h3 class="text-2xl font-medium">{card.titulo}</h3>
+          <p class="text-[15px] text-gris-medio font-medium">{card.fecha}</p>
           <p class="text-[15px] text-gris-medio">{card.subtitulo}</p>
           <p class="text-[15px] leading-5.5 text-gris-oscuro">{card.cuerpo}</p>
           <a
-            href={card.link}
+            href={card?.link}
             class="boton-principal mt-1 self-start px-5 py-1.5 text-[16px]"
           >
             {card.boton}
@@ -82,6 +85,18 @@ const { cards = galeria.cards } = Astro.props;
       const cards = Array.from(root.querySelectorAll<HTMLElement>(".card"));
       const N = cards.length;
       const total = N * W;
+
+      // Ajustar la altura del contenedor a la card más alta, para que el botón
+      // siempre quede visible por más larga que sea la descripción. Se suma el
+      // top offset (top-8 = 32px) y el arco (BEND) que baja las cards laterales.
+      const TOP_OFFSET = 32;
+      const ajustarAltura = () => {
+        const tallest = Math.max(...cards.map((c) => c.offsetHeight));
+        root.style.height = `${TOP_OFFSET + tallest + BEND}px`;
+      };
+      ajustarAltura();
+      // Recalcular cuando termina de cargar la fuente (cambia el alto del texto).
+      document.fonts?.ready.then(ajustarAltura);
 
       const scroll = { current: 0, target: 0, ease: 0.07 };
       // Arrancar con una card destacada en el centro (no en un borde).
@@ -154,25 +169,39 @@ const { cards = galeria.cards } = Astro.props;
       let startX = 0;
       let startTarget = 0;
       let moved = false;
+      let captured = false;
+      let pointerId = -1;
       root.addEventListener("pointerdown", (e) => {
         down = true;
         moved = false;
+        captured = false;
         startX = e.clientX;
         startTarget = scroll.target;
-        root.classList.add("dragging");
-        root.setPointerCapture(e.pointerId);
+        pointerId = e.pointerId;
       });
       root.addEventListener("pointermove", (e) => {
         if (!down) return;
         const dx = e.clientX - startX;
-        if (Math.abs(dx) > 4) moved = true;
-        scroll.target = startTarget - dx;
+        // Recién al superar el umbral consideramos que es un arrastre y
+        // capturamos el puntero. Así un click limpio no queda capturado y el
+        // botón/link puede navegar normalmente.
+        if (Math.abs(dx) > 4 && !captured) {
+          moved = true;
+          captured = true;
+          root.classList.add("dragging");
+          root.setPointerCapture(pointerId);
+        }
+        if (captured) scroll.target = startTarget - dx;
       });
       const up = () => {
         if (!down) return;
         down = false;
-        root.classList.remove("dragging");
-        snap(); // al soltar, se desliza suave hasta centrar
+        if (captured) {
+          root.classList.remove("dragging");
+          if (root.hasPointerCapture(pointerId)) root.releasePointerCapture(pointerId);
+          captured = false;
+          snap(); // al soltar un arrastre, se desliza suave hasta centrar
+        }
       };
       root.addEventListener("pointerup", up);
       root.addEventListener("pointercancel", up);

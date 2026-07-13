@@ -1,16 +1,82 @@
 ---
 import "../styles/global.css";
 import Button from "@/components/Button.astro";
+
+const secciones = [
+  { label: "Inicio", href: "/" },
+  { label: "Proyectos", href: "/proyectos" },
+  { label: "Sobre mí", href: "/sobre-mi" },
+  { label: "Charlemos", href: "/charlemos" },
+];
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 mx-20 my-8 px-12 flex py-4 flex-row justify-between items-center rounded-full bg-blanco/70 backdrop-blur-md">
-  <p>Logo</p>
-  <div>
-    <ul class="flex flex-row items-center gap-20">
-      <Button href="/">Inicio</Button>
-      <Button href="/proyectos">Proyectos</Button>
-      <Button href="/sobre-mi">Sobre mí</Button>
-      <a href="/charlemos" class="boton-principal px-6 py-1.5">Charlemos</a>
-    </ul>
-  </div>
+<header
+  class="fixed inset-x-0 top-0 z-50 flex flex-row items-center justify-between bg-blanco/70 px-6 py-4 backdrop-blur-md md:px-12 lg:mx-20 lg:my-8 lg:rounded-full lg:px-12"
+>
+  <a href="/"><img src="/logo.svg" alt="Logo en negro" class="h-8" /></a>
+
+  {/* NAV DESKTOP */}
+  <ul class="hidden flex-row items-center gap-20 lg:flex">
+    <Button href="/">Inicio</Button>
+    <Button href="/proyectos">Proyectos</Button>
+    <Button href="/sobre-mi">Sobre mí</Button>
+    <a href="/charlemos" class="boton-principal px-6 py-1.5">Charlemos</a>
+  </ul>
+
+  {/* BOTÓN MENÚ MOBILE */}
+  <button
+    id="menu-toggle"
+    type="button"
+    aria-label="Abrir menú"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    class="lg:hidden"
+  >
+    <img src="/manu-mobile.svg" alt="Menú" class="h-5" />
+  </button>
 </header>
+
+{/* MODAL MENÚ MOBILE */}
+<nav
+  id="mobile-menu"
+  class="fixed top-[68px] right-6 z-40 hidden w-52 flex flex-col gap-1 rounded-2xl border border-gris-claro/40 bg-blanco/80 p-3 shadow-lg backdrop-blur-md md:left-12 lg:hidden"
+>
+  {
+    secciones.map((s) => (
+      <a
+        href={s.href}
+        class="rounded-lg px-3 py-2 text-[1.125rem] hover:bg-gris-claro/40"
+      >
+        {s.label}
+      </a>
+    ))
+  }
+</nav>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  const closeMenu = () => {
+    menu?.classList.add("hidden");
+    toggle?.setAttribute("aria-expanded", "false");
+  };
+
+  toggle?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = menu?.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // Cerrar al hacer click fuera del menú.
+  document.addEventListener("click", (e) => {
+    if (menu?.classList.contains("hidden")) return;
+    const target = e.target as Node;
+    if (!menu?.contains(target) && !toggle?.contains(target)) closeMenu();
+  });
+
+  // Cerrar con Escape.
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+</script>

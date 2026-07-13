@@ -1,0 +1,72 @@
+---
+import servicios from "@/data/servicios.json";
+
+interface Servicio {
+  id: number;
+  imagen: string;
+  titulo: string;
+  subtitulo: string;
+  tituloItems: string;
+  items: string[];
+  tituloDescripcion: string;
+  descripcion: string;
+}
+
+interface Props {
+  cards?: Servicio[];
+}
+
+const { cards = servicios.servicios as Servicio[] } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-1 gap-10 md:grid-cols-3 md:grid-rows-[repeat(6,auto)]"
+>
+  {
+    cards.map((s) => (
+      <article class="flex flex-col gap-4 md:row-span-6 md:grid md:grid-rows-subgrid md:gap-4">
+        {/* Foto vertical detrás + carpeta glassmorphism adelante */}
+        <div class="relative mx-auto w-[80%]">
+          <img
+            src={s.imagen}
+            alt={s.titulo}
+            class="mx-auto block aspect-[3/4] w-[80%] -translate-y-10 rounded-xl object-cover"
+          />
+          <div
+            class="pointer-events-none absolute bottom-0 left-1/2 w-[95%] -translate-x-1/2 aspect-[374/301] bg-gris-claro/40 backdrop-blur-sm [mask:url(/carpeta.svg)_center/contain_no-repeat] [-webkit-mask:url(/carpeta.svg)_center/contain_no-repeat]"
+          />
+        </div>
+
+        {/* Título + subtítulo */}
+        <div class="mx-auto w-[80%]">
+          <h3 class="font-medium text-[20px] lg:text-2xl">{s.titulo}</h3>
+          <p class="text-gris-medio text-[18px] lg:text-[20px]">{s.subtitulo}</p>
+        </div>
+
+        {/* Divisor (ancho de la foto + carpeta) */}
+        <hr class="mx-auto w-[80%] border-t border-gris-claro" />
+
+        {/* Incluye: + items */}
+        <div class="mx-auto w-[80%]">
+          <p class="font-semibold text-gris-oscuro">{s.tituloItems}</p>
+          <ul class="mt-2 flex flex-col gap-1 text-[16px] text-gris-oscuro">
+            {s.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Segundo divisor */}
+        <hr class="mx-auto w-[80%] border-t border-gris-claro" />
+
+        {/* Es para: + descripción */}
+        <div class="mx-auto w-[80%]">
+          {s.tituloDescripcion && <p class="font-semibold text-gris-oscuro">{s.tituloDescripcion}</p>}
+          <p class="mt-1 mb-15 text-[16px] leading-5.5 text-gris-oscuro">
+            {s.descripcion}
+          </p>
+        </div>
+      </article>
+    ))
+  }
+</div>

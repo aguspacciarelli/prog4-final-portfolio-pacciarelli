@@ -1,8 +1,27 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Button from "@/components/Button.astro";
+import { proyectos } from "@/data/proyectos.json";
 ---
 
-<BaseLayout title="Sobre mí">
-  <h1>Proyectos</h1>
+<BaseLayout title="Proyectos">
+  <h1 class="mb-10 text-4xl font-medium lg:mb-14 lg:text-4xl">_Proyectos</h1>
+
+  <div class="grid grid-cols-2 gap-x-6 gap-y-10 mb-20 md:grid-cols-3 lg:grid-cols-4">
+    {
+      proyectos.map((p) => (
+        <a href={p.link} class="group flex flex-col gap-3 no-underline">
+          <img
+            src={p.image}
+            alt={p.titulo}
+            class="aspect-[4/5] w-full rounded-2xl object-cover grayscale transition-[filter] duration-500 group-hover:grayscale-0"
+          />
+          <div class="flex flex-col">
+            <h3 class="font-medium">{p.titulo}</h3>
+            <p class="text-[0.9rem] text-gris-medio">{p.fecha}</p>
+            <p class="text-[0.9rem] text-gris-medio">{p.subtitulo}</p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
 </BaseLayout>

@@ -1,0 +1,109 @@
+{
+  "secciones": [
+    {
+      "titulo": "Educación",
+      "tipo": "acordeon",
+      "items": [
+        {
+          "titulo": "Licenciatura en Tecnología Multimedial",
+          "empresa": "Universidad Maimónides",
+          "fecha": "2022 - Presente",
+          "detalle": "Técnica en Comunicación Interactiva y Diseño Multimedial. Cursando mi cuarto y último año en la carrera Licenciatura en Tecnología Multimedial."
+        }
+      ]
+    },
+    {
+      "titulo": "Experiencia laboral",
+      "tipo": "acordeon",
+      "items": [
+        {
+          "titulo": "Diseñadora Digital",
+          "empresa": "Freelance",
+          "fecha": "2022 - Presente",
+          "detalle": "Análisis de marca, análisis de mercado y diseño de identidad visual (Logo, paleta cromática, tipografía, dirección creativa). Creación de piezas gráficas para redes sociales (flyers, videos, carruseles y reels). Producción de más de 15 diseños mensuales, mejorando la visibilidad y el engagement de la marca. Manejo de herramientas de diseño y edición de video. Diseño y rediseño de sitios mejorando la claridad de navegación y jerarquía visual. Desarrollo de arquitectura de la información y definición de flujos de navegación. Creación de interfaces modernas, funcionales y coherentes."
+        },
+        {
+          "titulo": "Ayudante de cátedra",
+          "empresa": "Universidad Maimónides",
+          "fecha": "Mar. 2025 - Dic. 2025",
+          "detalle": "Ayudante de cátedra de la materia Diseño de Interfaces para la profesora Jorgelina Di Vicente. Acompañamiento durante el desarrollo de manuales de marca, investigación UX y diseño interfaces responsive en Figma. Feedback tanto presencial como virtual."
+        }
+      ]
+    },
+    {
+      "titulo": "Habilidades técnicas",
+      "tipo": "bloques",
+      "items": [
+        {
+          "tipo": "texto",
+          "titulo": "Diseño gráfico digital",
+          "detalle": "Branding: Benchmarking - Brief - Moodboards - Dirección creativa - Manuales de marca - Logos - Paletas cromáticas - Familias tipográficas - Mockups - Packaging - Motion Graphics."
+        },
+        {
+          "tipo": "texto",
+          "titulo": "Diseño UX/UI",
+          "detalle": "Experiencia de usuario - Diseño interactivo - Diseño de interfaces - Diseño centrado en el usuario - Wireframing (Baja y alta fidelidad) - Prototipado (con animaciones) - Entrevista de usuarios - Testeo en usuarios - Arquitectura de la información - Mapa de empatía - Customer Journey Map - Testeo A/B - Prueba de usabilidad."
+        },
+        {
+          "tipo": "iconos",
+          "titulo": "Softwares"
+        },
+        {
+          "tipo": "texto",
+          "titulo": "Otros",
+          "detalle": "Desarrollo Front-End (HTML5 - CSS3 - Vanilla JavaScript - React (JSX) - GitHub) - Modelado 3D (Blender) - Ableton Live Suite"
+        }
+      ]
+    },
+    {
+      "titulo": "Certificados",
+      "tipo": "bloques",
+      "items": [
+        {
+          "tipo": "link",
+          "titulo": "Ayudantía de cátedra",
+          "empresa": "Diseño de Interfaces",
+          "fecha": "Mar. 2025 - Dic. 2025",
+          "link": "https://www.linkedin.com/in/agustinapacciarelli/overlay/Certifications/172740995/treasury/?profileId=ACoAAD7eLHIBGLUshVp9SDqqSmpuESBQpGRRT1c"
+        },
+        {
+          "tipo": "link",
+          "titulo": "Curso de capacitación",
+          "empresa": "Adobe Photoshop",
+          "fecha": "Nov. 2024",
+          "link": "https://www.linkedin.com/in/agustinapacciarelli/overlay/Certifications/163158804/treasury/?profileId=ACoAAD7eLHIBGLUshVp9SDqqSmpuESBQpGRRT1c"
+        },
+        {
+          "tipo": "link",
+          "titulo": "Curso de capacitación",
+          "empresa": "Adobe Illustrator",
+          "fecha": "Oct. 2024",
+          "link": "https://www.linkedin.com/in/agustinapacciarelli/overlay/Certifications/163213646/treasury/?profileId=ACoAAD7eLHIBGLUshVp9SDqqSmpuESBQpGRRT1c"
+        },
+        {
+          "tipo": "link",
+          "titulo": "Curso de capacitación",
+          "empresa": "Figma",
+          "fecha": "Jun. 2024",
+          "link": "https://www.linkedin.com/in/agustinapacciarelli/overlay/Certifications/172551054/treasury/?profileId=ACoAAD7eLHIBGLUshVp9SDqqSmpuESBQpGRRT1c"
+        }
+      ]
+    },
+    {
+      "titulo": "Idiomas",
+      "tipo": "bloques",
+      "items": [
+        {
+          "tipo": "texto",
+          "titulo": "Español",
+          "detalle": "Nativo"
+        },
+        {
+          "tipo": "texto",
+          "titulo": "Inglés",
+          "detalle": "B2 Avanzado (First Certificate in English - FCE). Lectura técnica y comunicación fluida."
+        }
+      ]
+    }
+  ]
+}

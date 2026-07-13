@@ -1,0 +1,203 @@
+{
+  "proyectos": [
+    {
+      "slug": "maimoconecta",
+      "image": "/proyectos/maimoconecta/portada-maimoconecta.png",
+      "portada": "/proyectos/maimoconecta/banner.png",
+      "titulo": "MaimoConecta",
+      "fecha": "Mar. 2025 - Dic. 2025",
+      "subtitulo": "Branding • Diseño UX/UI • UX Research",
+      "roles": ["Branding", "Diseño UX/UI", "UX Research"],
+      "cuerpo": "Identidad visual y sitio web para un canal de streaming de la Universidad Maimónides para la materia Diseño Aplicado (2025).",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos/maimoconecta",
+      "secciones": [
+        {
+          "nav": "Descripción general",
+          "contenido": [
+            {
+              "titulo": "El proyecto",
+              "parrafo": "MaimoConecta nació como una propuesta de crear un canal de streaming de Universidad Maimónides para la materia Diseño Aplicado (2025). Busca integrar a todas las carreras en un espacio digital compartido, con contenidos en vivo, informales y participativos que reflejan la vida académica y social desde una mirada cercana, creativa y diversa."
+            },
+            {
+              "parrafo": "El proyecto responde a la necesidad de fortalecer la identidad institucional, fomentar la interacción entre facultades y ofrecer una plataforma moderna de comunicación para estudiantes, docentes y futuros ingresantes."
+            }
+          ],
+          "imagen": "/proyectos/maimoconecta/descripcion.png"
+        },
+        {
+          "nav": "Briefing",
+          "contenido": [
+            {
+              "titulo": "Objetivos",
+              "parrafo": "Generar comunidad y sentido de pertenencia entre estudiantes y docentes, posicionar a la Universidad Maimónides como una institución innovadora y cercana en el entorno digital, y atraer y fidelizar audiencias, estudiantes actuales, egresados y potenciales ingresantes, mediante una programación diversa que combine educación, entretenimiento y creatividad."
+            },
+            {
+              "titulo": "¿Qué hace a MaimoConecta diferente y mejor?",
+              "parrafo": "Su fortaleza está en combinar lo mejor de ambos mundos, profesionalismo con frescura, identidad institucional con cercanía y diversidad. Es un canal pensado como un espacio vivo, donde cada voz encuentra lugar y donde lo compartido genera comunidad. Con una estética moderna y un enfoque inclusivo, nos transmite que la universidad nos conecta más cerca de lo que imaginamos."
+            }
+          ],
+          "imagen": "/proyectos/maimoconecta/briefing.png"
+        },
+        {
+          "nav": "Branding",
+          "contenido": [
+            {
+              "titulo": "Identidad visual",
+              "parrafo": "MaimoConecta se presenta con una personalidad joven, dinámica y cercana. Su identidad visual y comunicacional refleja un estilo moderno y descontracturado, con un tono inclusivo y participativo. Se siente divertida pero a la vez profesional y confiable, equilibrando la frescura estudiantil con el respaldo institucional de la universidad."
+            }
+          ],
+          "imagen": "/proyectos/maimoconecta/branding.png"
+        },
+        {
+          "nav": "UI Kit",
+          "contenido": [
+            {
+              "titulo": "Átomos, íconos y más!",
+              "parrafo": "La landing page de MaimoConecta fue diseñada como una extensión digital del canal, reflejando sus valores de conexión, comunidad y cercanía. Su estructura prioriza la navegación fluida, visualmente atractiva y centrada en la participación, permitiendo que los usuarios accedan fácilmente a la información y contenido"
+            },
+            {
+              "parrafo": "Busca potenciar la presencia digital de MaimoConecta, ofrecer una experiencia intuitiva y generar un vínculo emocional con los usuarios, en conjunto con su misión de conectar ideas, voces y experiencias dentro del ámbito universitario de la Universidad Maimónides."
+            }
+          ],
+          "imagen": "/proyectos/maimoconecta/uikit.png"
+        },
+        {
+          "nav": "Pantallas finales",
+          "contenido": [
+            {
+              "titulo": "Resultado :)",
+              "parrafo": "La página busca acompañar al usuario en un recorrido que transmita la identidad de la marca: moderna, participativa y universitaria."
+            }
+          ],
+          "imagen": "/proyectos/maimoconecta/pantallas.png"
+        }
+      ]
+    },
+    {
+      "slug": "swingclub",
+      "image": "/proyectos/swingclub/portada-swingclub.png",
+      "portada": "/proyectos/swingclub/banner.png",
+      "titulo": "Swing Club",
+      "fecha": "Oct. 2024 - Nov. 2024",
+      "subtitulo": "Branding • Diseño UX/UI • Programación Web",
+      "roles": ["Branding", "Diseño UX/UI", "Programación Web"],
+      "cuerpo": "Desarrollo de un e-commerce para los aficionados de la música versión analógica para la materia Programación Multimedial III.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos/swingclub",
+      "secciones": [
+        {
+          "nav": "Descripción general",
+          "contenido": [
+            {
+              "titulo": "El proyecto",
+              "parrafo": "Swing Club nació como un proyecto académico de la materia Programación Multimedial III, con el objetivo de desarrollar un e-commerce para los aficionados de la música en su versión analógica.  Este e-commerce está inspirado en el jazz, el blues, el soul, el góspel y el R&B. Se venden productos como vinilos, cassettes, cds, tocadiscos, accesorios para tocadiscos e instrumentos, entre otras cosas similares."
+            },
+            {
+              "parrafo": "El problema parte de que hoy en día el formato analógico musical no solo no cuena con los algoritmos para recomendarnos este tipo de productos en la vida real, sino que no hay centralización a la hora de comprar, por lo que se hace tedioso encontrar gran cantidad de productos que deseamos en un mismo lugar sin que varíe demasiado el precio entre tiendas."
+            }
+          ],
+          "imagen": "/proyectos/swingclub/descripcion.png"
+        },
+        {
+          "nav": "Briefing",
+          "contenido": [
+            {
+              "titulo": "Objetivos de Swing Club",
+              "parrafo": "Ofrecer una experiencia premium, personalizada e innovadora en la compra de productos de música analógica, incluyendo aquellos difíciles de encontrar, fomentando al mismo tiempo el resurgimiento y la apreciación de este formato."
+            },
+            {
+              "titulo": "¿Qué necesidad tiene el público que SwingClub puede resolver?",
+              "parrafo": "SwingClub le facilita a sus usuarios a conseguir en un mismo lugar, no sólo seguro sino actualizado y fácil de usar, artículos de música analógica. Estos son productos que no son fáciles de encontrar en todos lados, sobre todo siendo productos de nicho. SwingClub también tiene un sistema de recomendaciones para aquellos que quieran ampliar su conocimiento y gusto musical y no saben por dónde empezar, sumado a recomendaciones de productos que les podrían interesar en base a este sistema."
+            }
+          ],
+          "imagen": "/proyectos/swingclub/briefing.png"
+        },
+        {
+          "nav": "Branding",
+          "contenido": [
+            {
+              "titulo": "Identidad visual",
+              "parrafo": "La propuesta del logo y la identidad de Swing Club busca atraer con sus colores vibrantes, con una influencia de Swiss Style, cubismo y una estética artesanal."
+            }
+          ],
+          "imagen": "/proyectos/swingclub/branding.png"
+        },
+        {
+          "nav": "UI Kit",
+          "contenido": [
+            {
+              "titulo": "Átomos, íconos y más!",
+              "parrafo": "El UI Kit de Swing Club con el cual se construyó la base para diseñar y desarrollar el sitio web del e-commerce. Cards de producto, carrito, filtros y navegación diseñados para una experiencia de compra fluida."
+            }
+          ],
+          "imagen": "/proyectos/swingclub/uikit.png"
+        },
+        {
+          "nav": "Pantallas finales",
+          "contenido": [
+            {
+              "titulo": "Resultado :)",
+              "parrafo": "Aplicación real de un e-commerce funcional y coherente, con la marca aplicada de forma consistente en todo el flujo de compra."
+            }
+          ],
+          "imagen": "/proyectos/swingclub/pantallas.png"
+        }
+      ]
+    },
+    {
+      "image": "/proyectos/lorusso/portada-lorusso.png",
+      "titulo": "Lorusso Servicios Inmobiliarios",
+      "fecha": "Mar. 2026 - Abr. 2026",
+      "subtitulo": "Diseño UX/UI",
+      "cuerpo": "Rediseño de la página web de una inmobiliaria ubicada en Catalinas Sur, La Boca.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    },
+    {
+      "image": "/proyectos/netflix/portada-netflix.png",
+      "titulo": "Netflix Merch Store",
+      "fecha": "Ago. 2023 - Nov. 2023",
+      "subtitulo": "Diseño UX/UI • UX Research",
+      "cuerpo": "Integración de una store de merch a la app mobile de Netflix para la materia Producción Digital II.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    },
+    {
+      "image": "/proyectos/tinocafe/portada-tino.png",
+      "titulo": "Tino Café",
+      "fecha": "Nov. 2025 - May. 2026",
+      "subtitulo": "Branding • Diseño gráfico digital",
+      "cuerpo": "Identidad visual, community managment y diseño de piezas para redes para una nueva cafetería ubicada en el barrio de Coghlan, Belgrano, CABA.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    },
+    {
+      "image": "/proyectos/fuegos/portada-fuegosjl.png",
+      "titulo": "Fuegos JL",
+      "fecha": "Ago. 2025 - Sep. 2025",
+      "subtitulo": "Diseño UX/UI",
+      "cuerpo": "Propuesta de rediseño de e-commerce para una marca de parrillas y asadores artesanales.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    },
+    {
+      "image": "/proyectos/pibastech/portada-pibastech.png",
+      "titulo": "Pibas Tech",
+      "fecha": "May. 2025 -  Jun. 2025",
+      "subtitulo": "Branding • Diseño gráfico digital",
+      "cuerpo": "Identidad visual para una comunidad y red de apoyo de mujeres y disidencias argentinas en el mundo IT.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    },
+    {
+      "image": "/proyectos/scalemasters/portada-scalemasters.png",
+      "titulo": "Scale Masters",
+      "fecha": "Ago. 2025 - Oct. 2025",
+      "subtitulo": "Diseño UX/UI",
+      "cuerpo": "Rediseño de página web de visualización de un curso para crear y escalar e-commerce.",
+      "boton": "Miralo completo <3",
+      "link": "/proyectos"
+    }
+  ]
+}

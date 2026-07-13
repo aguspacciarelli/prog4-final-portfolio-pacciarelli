@@ -1,8 +1,74 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import AcordionCv from "@/components/AcordionCv.astro";
 import Button from "@/components/Button.astro";
+import LibrosEasterEgg from "@/components/LibrosEasterEgg.astro";
 ---
 
 <BaseLayout title="Sobre mí">
-  <h1>Sobre mí</h1>
+  <div>
+    <a href="/" class="hidden hover:underline hover:underline-offset-2 lg:block">← Volver</a>
+  </div>
+
+  <section class="flex items-center flex-col lg:flex-row lg:gap-15">
+
+    <div class="relative mx-auto w-full max-w-md lg:mx-0 lg:mt-10 lg:w-[48%] lg:max-w-none lg:shrink-0">
+      <img src="/sobre-mi.png" alt="Portada de la sección Sobre mí" class="mt-5 lg:mt-15 w-full">
+      <iframe
+        data-testid="embed-iframe"
+        src="https://open.spotify.com/embed/playlist/6kvA41cqqlFJEOI5IAmcoI?utm_source=generator&theme=0&si=a7dbb73759c44521"
+        height="152"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        style="border-radius:12px"
+        class="hidden lg:block absolute -right-5 -bottom-18 w-[60%] rounded-xl shadow-lg"
+      ></iframe>
+      <LibrosEasterEgg />
+    </div>
+   
+    <div class="flex flex-col gap-8 text-[1.125rem]">
+      
+      <div class="flex flex-col gap-5">
+        <h3 class="text-4xl mt-5 lg:text-5xl">Hola, soy Agus :)</h3>
+        <p class= "font-medium">Técnica en Comunicación Interactiva y Diseño Multimedial, futura Licenciada en Tecnología Multimedial, especializada en diseño UX/UI y branding digital.</p>
+      </div>
+
+      <p class="text-gris-oscuro">Soy una diseñadora multi-disciplinaria apasionada por su trabajo. Me gusta encontrar las mejores herramientas y procesos para lograr un producto que no solo sea lindo, sino que ofrezca la mejor experiencia posible para el usuario.</p>
+      <p class="text-gris-oscuro">Seguí leyendo y conocé un poco más sobre mi recorrido ;)</p>
+
+      </div>
+
+  </section>
+
+  <section class="mt-15 mb-15 lg:mt-40 lg:mb-20">
+
+    <div class="flex flex-col lg:flex-row lg:justify-between lg:mb-25">
+
+      <div class="flex flex-col gap-3">
+        <h3 class="font-semibold text-3xl lg:text-4xl">Agustina Pacciarelli</h3>
+        <div>
+          <p class="text-gris-medio text-[1.125rem] lg:text-2xl">Diseñadora UX/UI</p>
+          <p class="text-gris-medio text-[1.125rem] lg:text-2xl">Diseñadora Digital</p>
+        </div>
+        <a href="/" class="boton-principal inline-block w-fit px-4 py-1 lg:px-6 lg:py-2 lg:text-[1.125rem]">Descargar CV</a>
+      </div>
+      
+      <div class="flex justify-between mt-10 mb-10 lg:flex-row lg:justify-between lg:gap-10">
+        <div>
+          <p class="text-gris-oscuro lg:text-right lg:text-[1.125em]">Buenos Aires, Argentina</p>
+          <a href="/" class="link lg:text-right lg:text-[1.125em]">aguspacciarelli@gmail.com</a>
+        </div>
+        <div class="flex flex-col">
+          <a href="https://www.behance.net/agustinpacciar1" class="link text-right lg:text-[1.125em]">Behance</a>
+          <a href="https://www.linkedin.com/in/agustinapacciarelli/" class="link text-right lg:text-[1.125em]">Linkedin</a>
+          <a href="https://www.instagram.com/agusp.dsg/" class="link text-right lg:text-[1.125em]">Instagram</a>
+        </div>
+      </div>
+
+    </div>
+
+    <AcordionCv />
+
+  </section>
 </BaseLayout>

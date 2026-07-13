@@ -9,7 +9,44 @@
   --color-gris-claro: #bababa;
   --color-verde-confirm: #00d47f;
   --color-rojo-error: #ff3737;
+  --color-gris-hover: #2D2D2D;
   --font-sans: "Instrument Sans", sans-serif;
+
+  /* Animaciones del acordeón (Radix) */
+  --animate-accordion-down: accordion-down 0.25s ease-out;
+  --animate-accordion-up: accordion-up 0.25s ease-out;
+
+  /* Fade al cambiar de tab (Radix Tabs) */
+  --animate-tab-in: tab-in 0.3s ease;
+}
+
+@keyframes tab-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 
 @layer base {
@@ -24,9 +61,21 @@
 }
 
 @utility boton-principal {
-  @apply bg-negro text-blanco font-medium rounded-full border-0 outline-none;
+  @apply bg-negro text-blanco text-center items-center justify-center font-medium rounded-full border-0 outline-none hover:bg-gris-hover;
+}
+
+@utility boton-secundario {
+  @apply font-medium text-gris-oscuro text-center items-center justify-center border-2 rounded-full hover:underline underline-offset-3;
 }
 
 @utility titulos-secciones {
   @apply text-gris-oscuro text-center text-[28px] font-medium
+}
+
+@utility link {
+  @apply text-gris-oscuro underline decoration-[0.5px] underline-offset-2
+}
+
+@utility estilo-form {
+  @apply border-b border-gris-claro bg-transparent py-2.5 outline-none transition-colors focus:border-negro;
 }

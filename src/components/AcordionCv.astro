@@ -1,0 +1,134 @@
+---
+import fs from "node:fs";
+import CvAccordion from "@/components/CvAccordion.tsx";
+import cv from "@/data/cv.json";
+
+interface AccordionItem {
+  titulo: string;
+  empresa: string;
+  fecha: string;
+  detalle: string;
+}
+interface TextoItem {
+  tipo: "texto";
+  titulo: string;
+  detalle: string;
+}
+interface IconosItem {
+  tipo: "iconos";
+  titulo: string;
+}
+interface LinkItem {
+  tipo: "link";
+  titulo: string;
+  empresa: string;
+  fecha: string;
+  link: string;
+}
+type BloqueItem = TextoItem | IconosItem | LinkItem;
+
+type Seccion =
+  | { titulo: string; tipo: "acordeon"; items: AccordionItem[] }
+  | { titulo: string; tipo: "bloques"; items: BloqueItem[] };
+
+const secciones = cv.secciones as Seccion[];
+
+// Recorre la carpeta public/toolbox y arma la lista de iconos.
+const iconosToolbox = fs
+  .readdirSync("public/toolbox")
+  .filter((f) => /\.(png|svg|jpe?g|webp)$/i.test(f))
+  .sort((a, b) => parseInt(a) - parseInt(b))
+  .map((f) => ({
+    src: `/toolbox/${f}`,
+    nombre: f.replace(/^\d+-/, "").replace(/\.\w+$/, ""),
+  }));
+---
+
+<div class="flex flex-col gap-12">
+  {
+    secciones.map((sec) => (
+      <div class="flex flex-col gap-4 lg:flex-row lg:gap-16">
+        <h3 class="text-[1.25rem] font-medium lg:w-1/4 lg:shrink-0">
+          {sec.titulo}
+        </h3>
+
+        <div class="lg:flex-1">
+          {sec.tipo === "acordeon" ? (
+            <CvAccordion client:load items={sec.items} />
+          ) : (
+            <div class="flex flex-col">
+              {sec.items.map((item) => {
+
+                /* Bloque de texto siempre visible */
+                if (item.tipo === "texto")
+                  return (
+                    <div class="border-b border-gris-claro/60 py-4">
+                      <p class="font-medium lg:text-[1.125rem]">{item.titulo}</p>
+                      <p class="mt-1 leading-6 text-gris-oscuro">
+                        {item.detalle}
+                      </p>
+                    </div>
+                  );
+
+                /* Bloque de toolbox */
+                if (item.tipo === "iconos")
+                  return (
+                    <div class="border-b border-gris-claro/60 py-4">
+                      <p class="lg:text-[1.125rem] font-medium">{item.titulo}</p>
+                      <div class="mt-3 flex flex-wrap gap-3">
+                        {iconosToolbox.map((icon) => (
+                          <img
+                            src={icon.src}
+                            alt={icon.nombre}
+                            title={icon.nombre}
+                            class="h-10 w-10 object-contain"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  );
+
+                /* Bloque de certificados */
+                if (item.tipo === "link")
+                  return (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group flex items-start justify-between gap-4 border-b border-gris-claro/60 py-4"
+                    >
+                      <span class="flex flex-col">
+                        <span class="flex flex-row items-center lg:items-baseline gap-x-2">
+                          <span class="lg:text-[1.125rem] leading-5">{item.titulo}</span>
+                          <span class="text-gris-medio">|</span>
+                          <span class="font-medium leading-5">{item.empresa}</span>
+                        </span>
+                        <span class="mt-0.5 text-gris-medio">
+                          {item.fecha}
+                        </span>
+                      </span>
+                      <svg
+                        class="mt-1 h-5 w-5 shrink-0 text-gris-medio transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-negro"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                      </svg>
+                    </a>
+                  );
+
+                return null;
+              })}
+            </div>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</div>

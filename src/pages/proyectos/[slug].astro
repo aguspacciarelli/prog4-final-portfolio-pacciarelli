@@ -1,0 +1,86 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProyectoTabs from "@/components/ProyectoTabs.tsx";
+import { proyectos } from "@/data/proyectos.json";
+
+interface Bloque {
+  titulo?: string;
+  parrafo?: string;
+}
+interface Seccion {
+  nav: string;
+  contenido: Bloque[];
+  imagen?: string;
+}
+interface Proyecto {
+  slug?: string;
+  image: string;
+  portada?: string;
+  titulo: string;
+  fecha: string;
+  subtitulo: string;
+  roles?: string[];
+  cuerpo: string;
+  boton: string;
+  link: string;
+  secciones?: Seccion[];
+}
+
+export function getStaticPaths() {
+  return (proyectos as Proyecto[])
+    .filter(
+      (p): p is Proyecto & { slug: string; secciones: Seccion[] } =>
+        Boolean(p.slug && p.secciones),
+    )
+    .map((proyecto) => ({
+      params: { slug: proyecto.slug },
+      props: { proyecto },
+    }));
+}
+
+const { proyecto } = Astro.props;
+---
+
+<BaseLayout title={proyecto.titulo}>
+  <article class="flex flex-col gap-10">
+    <a
+      href="/proyectos"
+      class="w-fit underline-offset-2 hover:underline"
+    >
+      ← Volver
+    </a>
+
+    {/* Portada */}
+    {
+      proyecto.portada && (
+        <img
+          src={proyecto.portada}
+          alt={proyecto.titulo}
+          class="aspect-video w-full h-140 rounded-2xl object-cover"
+        />
+      )
+    }
+
+    {/* Roles + fecha */}
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+     
+      <div class="flex flex-wrap gap-2">
+        {
+          proyecto.roles?.map((rol) => (
+            <span class="rounded-full border border-gris-claro px-3 py-1 text-gris-oscuro">
+              {rol}
+            </span>
+          ))
+        }
+      </div>
+      <p class="text-gris-medio">{proyecto.fecha}</p>
+      
+    </div>
+
+    {/* Título */}
+    <h1 class="text-4xl font-medium lg:text-6xl">{proyecto.titulo}</h1>
+
+    {/* Tabs con las secciones */}
+    <ProyectoTabs client:load secciones={proyecto.secciones} />
+  </article>
+</BaseLayout>

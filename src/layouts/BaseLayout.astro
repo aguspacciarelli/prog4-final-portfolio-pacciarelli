@@ -9,11 +9,10 @@ const { title } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Instrument Sans (Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,7 +25,7 @@ const { title } = Astro.props;
 
   <body>
     <Header />
-    <main class="mt-30">
+    <main class="mt-20 lg:mt-30 px-6 md:px-12 lg:px-30">
       <slot />
     </main>
   </body>

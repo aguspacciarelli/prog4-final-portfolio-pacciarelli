@@ -1,66 +1,54 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Button from "@/components/Button.astro";
+import Hero from "@/components/Hero.astro";
 import CardCarousel from "@/components/CardCarousel.astro";
-import data from "@/data/data.json";
+import CardServicios from "@/components/CardServicios.astro";
 ---
 
 <BaseLayout title="Inicio">
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col justify-center gap-6 pb-10 lg:pb-20">
 
-<div class="px-30 flex flex-col gap-8">
+    <Hero />
 
-<div class="flex flex-col gap-5">
+    <section class="mt-15 lg:mt-35 flex flex-col gap-8">
+      <div class="relative flex flex-col items-center gap-4 lg:flex-row lg:justify-center lg:gap-0">
 
-      <div class="grid grid-cols-[auto_1fr] items-baseline-last gap-x-16 w-full">
-
-        <h1 class="text-8xl tracking-[-0.4rem] font-medium">Diseñadora</h1>
-        <p class="justify-self-end text-[18px] text-right leading-5.5 text-gris-oscuro">
-          Creo marcas y productos con una <br> narrativa sólida y experiencias
-          estéticas <br> que los usuarios disfrutan usar
-        </p>
-        <h2 class="text-8xl tracking-[-0.4rem] font-medium">Digital</h2>
-
-      </div>
-
-      <div class="grid grid-cols-[1fr_auto] items-baseline-last gap-x-8 w-full leading-5.5">
-
-        <p class="text-[18px] w-1/3 text-gris-oscuro">
-          Diseño UX/UI, Branding, Dirección Creativa, Experiencias Digitales <br> y
-          mucho más :)
-        </p>
-        <h2 class="text-8xl text-right tracking-[-0.4rem] font-medium">Agustina</h2>
-
-        <p class="w-1/3 text-[18px] leading-5.5 text-gris-oscuro">
-          Buenos Aires, <br> Argentina
-        </p>
-        <h2 class="text-8xl text-right tracking-[-0.4rem] font-medium">Pacciarelli</h2>
-
-      </div>
-
-    </div>
-
-    <div class="flex flex-col gap-1.5">
-
-      <a href="/charlemos" class="boton-principal text-[20px] self-start px-6 py-1.5">Hablemos!</a>
-      <p class="text-gris-medio">Disponible para trabajo freelance y part/full time</p>
-      
-    </div>
-
-</div>
-
-    <div class="mt-35 flex flex-col gap-8">
-      <div class="mx-30 relative flex items-center justify-center">
-        <h3 class="titulos-secciones">/Mis proyectos favoritos</h3>
-        <a
-          href="/proyectos"
-          class="boton-principal absolute top-1/2 right-0 -translate-y-1/2 text-[20px] px-6 py-1.5"
-        >
-          Ver todos →
+        <h3 class="titulos-secciones whitespace-nowrap max-lg:text-center max-lg:text-[1.25rem]">/ Mis proyectos favoritos</h3>
+        <a href="/proyectos" class="boton-principal static self-center px-6 py-1.5 text-[1rem] lg:absolute lg:top-1/2 lg:right-0 lg:-translate-y-1/2">
+        Ver todos →
         </a>
+
       </div>
+
       <CardCarousel />
-    </div>
+      
+    </section>
+
+    <section class="flex flex-col lg:mt-20 lg:mb-20">
+
+       <h3 class="mb-20 titulos-secciones whitespace-nowrap max-lg:text-center max-lg:text-[1.25rem] lg:mb-30 lg:leading-8">% Diseñadora multidisciplinaria, <br>a tus servicios</h3>
+       <CardServicios />
+      <a href="/charlemos" class="boton-principal static self-center text-[1rem] px-8 py-2 lg:text-[1.125rem]">Trabajemos juntos!</a>
+
+    </section>
+
+    <section class="flex flex-col items-center mt-20 mb-10 lg:mb-20 lg:flex-row lg:items-center lg:justify-center lg:gap-15">
+      <img src="/inicio-sobre_mi.png" alt="Imágenes de Agustina Pacciarelli en la section Sobre mí" class="mb-10 lg:w-[40%]">
+      <div class="flex flex-col items-center lg:items-start gap-6 w-[90%] text-center lg:w-fit lg:text-left">
+          <p class="text-gris-oscuro font-medium text-[0.95rem] lg:max-w-[25em] lg:text-[1.25rem]">Soy Agus, técnica en Comunicación Interactiva y Diseño Multimedial, futura Licenciada en Tecnología Multimedial, especializada en diseño UX/UI y branding digital.</p>
+          <a href="/sobre-mi" class="boton-principal static self-center lg:self-start text-[1rem] px-8 py-1.5 lg:text-[1.125rem]">Sobre mí :)</a>
+      </div>
+    </section>
+
+    <section class="flex flex-col items-center mt-5 mb-15 lg:mt-20">
+      <h3 class="text-negro text-center text-[1.25rem] mb-2 lg:text-[1.75rem] font-medium lg:mb-2"># ¿Creamos algo juntos?</h3>
+      <p class="text-gris-oscuro text-[1.15rem] w-[80%] lg:text-[1.25rem] text-center lg:w-[41%] lg:mb-10">Todo es más fácil si tenés una mano amiga que te ayude. <br> Sentite libre de mandarme un mail con lo que quieras consultar o conectandote personalmente conmigo por Linkedin :)</p>
+      <div class="flex gap-3 mt-5 lg:flex-row">
+        <a href="/charlemos" class="boton-principal text-[1rem] px-6 py-1 lg:px-8 lg:py-1.5 lg:text-[1.25rem]">Hablemos</a>
+        <a href="https://www.linkedin.com/in/agustinapacciarelli/" class="text-[1rem] boton-secundario px-4 py-1 lg:px-8 lg:py-1.5 lg:text-[1.25rem]">+ Conectemos</a>
+      </div>
+    </section>
 
   </div>
+
 </BaseLayout>
