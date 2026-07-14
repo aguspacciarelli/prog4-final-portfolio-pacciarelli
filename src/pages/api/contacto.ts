@@ -27,7 +27,9 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const apiKey = import.meta.env.RESEND_API_KEY;
+    // process.env (runtime) en vez de import.meta.env para que la key NO se
+    // incruste en el build. En Vercel se lee de las Environment Variables.
+    const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       console.error("Falta la variable de entorno RESEND_API_KEY");
       return new Response(

@@ -2,6 +2,8 @@
 dist/
 # generated types
 .astro/
+# vercel build artifacts (regenerated on each deploy)
+.vercel/
 
 # dependencies
 node_modules/
