@@ -1,0 +1,28 @@
+---
+import Button from "@/components/Button.astro";
+---
+
+<footer class="bg-[#EAEAEA]/70 overflow-hidden px-10 py-5 flex flex-col-reverse lg:flex-row lg:px-40 lg:py-10 lg:justify-between lg:items-center">
+<div class="flex flex-col gap-10 items-center">
+    <img src="/logo.svg" alt="Logo en negro" class="mt-20 h-40" />
+    <p>Agustina Pacciarelli © 2026</p>
+</div>
+<div class="relative flex flex-col justify-center gap-12 lg:justify-between lg:text-right">
+    <img src="/asterisco.svg" alt="" aria-hidden="true" class="pointer-events-none absolute inset-x-0 translate-y-8 top-0 z-0 mx-auto w-60 lg:inset-x-70 lg:w-100 lg:-translate-y-1" />
+    <p class="relative z-10 font-bold text-2xl lg:text-5xl">aguspacciarelli@gmail.com</p>
+    <div class="relative z-10 flex flex-row justify-between lg:justify-end lg:gap-25">
+        <ul class="flex flex-col gap-2">
+            <li><p>Buenos Aires, Argentina</p></li>
+            <li><Button href="https://www.behance.net/agustinpacciar1">Behance</Button></li>
+            <li><Button href="https://www.linkedin.com/in/agustinapacciarelli/">Linkedin</Button></li>
+            <li><Button href="https://www.instagram.com/agusp.dsg/">Instagram</Button></li>
+        </ul>
+        <ul class="flex flex-col gap-2 text-right">
+            <li><Button href="/">Inicio</Button></li>
+            <li><Button href="/proyectos">Proyectos</Button></li>
+            <li><Button href="/sobre-mi">Sobre mí</Button></li>
+            <li><Button href="/charlemos">Charlemos</Button></li>
+        </ul>
+    </div>
+</div>
+</footer>

@@ -2,7 +2,7 @@
   "servicios": [
     {
       "id": 1,
-      "imagen": "https://picsum.photos/seed/uxui/600/750",
+      "imagen": "/servicios/uxui.png",
       "titulo": "UX / UI Design",
       "subtitulo": "Diseño mobile y web",
       "tituloItems": "Incluye:",
@@ -20,7 +20,7 @@
     },
     {
       "id": 2,
-      "imagen": "https://picsum.photos/seed/branding/600/750",
+      "imagen": "/servicios/branding.png",
       "titulo": "Branding",
       "subtitulo": "Diseño de marca",
       "tituloItems": "Incluye:",
@@ -38,7 +38,7 @@
     },
     {
       "id": 3,
-      "imagen": "https://picsum.photos/seed/personalizado/600/750",
+      "imagen": "/servicios/personalizado.png",
       "titulo": "Personalizado",
       "subtitulo": "Algo diferente :)",
       "tituloItems": "Otras cosas interesantes que sé hacer:",

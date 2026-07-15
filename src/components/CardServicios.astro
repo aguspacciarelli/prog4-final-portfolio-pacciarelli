@@ -25,15 +25,15 @@ const { cards = servicios.servicios as Servicio[] } = Astro.props;
   {
     cards.map((s) => (
       <article class="flex flex-col gap-4 md:row-span-6 md:grid md:grid-rows-subgrid md:gap-4">
-        {/* Foto vertical detrás + carpeta glassmorphism adelante */}
+        {/* Foto + carpeta */}
         <div class="relative mx-auto w-[80%]">
           <img
             src={s.imagen}
             alt={s.titulo}
-            class="mx-auto block aspect-[3/4] w-[80%] -translate-y-10 rounded-xl object-cover"
+            class="mx-auto block aspect-3/4 w-[80%] -translate-y-10 rounded-xl object-cover hover:-translate-y-25 duration-300 ease-in-out"
           />
           <div
-            class="pointer-events-none absolute bottom-0 left-1/2 w-[95%] -translate-x-1/2 aspect-[374/301] bg-gris-claro/40 backdrop-blur-sm [mask:url(/carpeta.svg)_center/contain_no-repeat] [-webkit-mask:url(/carpeta.svg)_center/contain_no-repeat]"
+            class="pointer-events-none absolute bottom-0 left-1/2 w-[90%] -translate-x-1/2 aspect-374/301 bg-gris-claro/40 backdrop-blur-sm [mask:url(/carpeta.svg)_center/contain_no-repeat] [-webkit-mask:url(/carpeta.svg)_center/contain_no-repeat]"
           />
         </div>
 
@@ -43,7 +43,7 @@ const { cards = servicios.servicios as Servicio[] } = Astro.props;
           <p class="text-gris-medio text-[18px] lg:text-[20px]">{s.subtitulo}</p>
         </div>
 
-        {/* Divisor (ancho de la foto + carpeta) */}
+        {/* Divisor */}
         <hr class="mx-auto w-[80%] border-t border-gris-claro" />
 
         {/* Incluye: + items */}
