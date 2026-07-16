@@ -1,25 +1,24 @@
-import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
-// Este endpoint corre en el servidor (no se pre-renderiza).
+// Corre en el servidor
 export const prerender = false;
 
 const DESTINO = "aguspacciarelli@gmail.com";
 
 // Evita inyección de HTML en el mail.
-function escapar(texto: string) {
+function escapar(texto) {
   return String(texto)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 }
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST = async ({ request }) => {
   try {
     const { nombre, apellido, mail, servicio, descripcion } =
       await request.json();
 
-    // Validación básica del lado del servidor.
+    // Validación
     if (!nombre || !apellido || !mail || !descripcion) {
       return new Response(
         JSON.stringify({ error: "Faltan campos obligatorios." }),
@@ -27,8 +26,6 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // process.env (runtime) en vez de import.meta.env para que la key NO se
-    // incruste en el build. En Vercel se lee de las Environment Variables.
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       console.error("Falta la variable de entorno RESEND_API_KEY");

@@ -54,6 +54,7 @@ const secciones = [
 </nav>
 
 <script>
+  // @ts-nocheck
   const toggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("mobile-menu");
 
@@ -68,15 +69,10 @@ const secciones = [
     toggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // Cerrar al hacer click fuera del menú.
+  // Cerrar al hacer click fuera del menú
   document.addEventListener("click", (e) => {
     if (menu?.classList.contains("hidden")) return;
-    const target = e.target as Node;
+    const target = e.target;
     if (!menu?.contains(target) && !toggle?.contains(target)) closeMenu();
-  });
-
-  // Cerrar con Escape.
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeMenu();
   });
 </script>

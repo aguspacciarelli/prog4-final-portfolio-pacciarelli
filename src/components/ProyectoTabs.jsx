@@ -1,32 +1,17 @@
 import * as Tabs from "@radix-ui/react-tabs";
 import { useEffect, useRef, useState } from "react";
 
-interface Bloque {
-  titulo?: string;
-  parrafo?: string;
-}
-
-interface Seccion {
-  nav: string;
-  contenido: Bloque[];
-  imagen?: string;
-}
-
-interface Props {
-  secciones: Seccion[];
-}
-
-export default function ProyectoTabs({ secciones }: Props) {
+export default function ProyectoTabs({ secciones }) {
   const [value, setValue] = useState("tab-0");
-  const wrapRef = useRef<HTMLDivElement>(null);
+  const wrapRef = useRef(null);
   const [indicador, setIndicador] = useState({ left: 0, width: 0, top: 0 });
 
-  // Mueve la línea indicadora hacia la tab activa (con transición suave).
+  // Transición de linea indicadora de selección
   useEffect(() => {
     const wrap = wrapRef.current;
     if (!wrap) return;
     const mover = () => {
-      const activo = wrap.querySelector<HTMLElement>('[data-state="active"]');
+      const activo = wrap.querySelector('[data-state="active"]');
       if (activo && activo.offsetWidth > 0) {
         setIndicador({
           left: activo.offsetLeft,
@@ -35,8 +20,7 @@ export default function ProyectoTabs({ secciones }: Props) {
         });
       }
     };
-    // Medir después de que el navegador haga el layout (si no, el ancho puede
-    // salir 0). Se recalcula también al cargar la fuente y en cada resize.
+
     const raf = requestAnimationFrame(mover);
     document.fonts?.ready.then(() => requestAnimationFrame(mover));
     const ro = new ResizeObserver(() => requestAnimationFrame(mover));
@@ -53,7 +37,7 @@ export default function ProyectoTabs({ secciones }: Props) {
       onValueChange={setValue}
       className="flex flex-col gap-8"
     >
-      {/* Navegación de tabs con indicador deslizante */}
+      {/* Navegación de tabs con indicador */}
       <div ref={wrapRef} className="relative">
         <Tabs.List className="flex flex-wrap gap-x-6 gap-y-2 border-b border-gris-claro/60">
           {secciones.map((sec, i) => (
@@ -79,7 +63,6 @@ export default function ProyectoTabs({ secciones }: Props) {
         />
       </div>
 
-      {/* Contenido: cada panel con su altura natural (sin espacio en blanco) */}
       {secciones.map((sec, i) => (
         <Tabs.Content
           key={i}

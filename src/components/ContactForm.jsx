@@ -14,13 +14,11 @@ const inputClass = "estilo-form";
 const labelClass = "font-medium";
 const errorClass = "text-[0.85rem] text-rojo-error";
 
-type Estado = "idle" | "enviando" | "ok" | "error";
-
 export default function ContactForm() {
   const [servicio, setServicio] = useState("");
-  const [estado, setEstado] = useState<Estado>("idle");
+  const [estado, setEstado] = useState("idle");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form));
@@ -86,7 +84,7 @@ export default function ContactForm() {
         <Select.Root value={servicio} onValueChange={setServicio}>
           <Select.Trigger
             aria-label="Servicio o consulta"
-            className="estilo-form flex cursor-pointer items-center justify-between data-[placeholder]:text-gris-medio"
+            className="estilo-form flex cursor-pointer items-center justify-between data-placeholder:text-gris-medio"
           >
             <Select.Value placeholder="Servicio / Consulta" />
             <Select.Icon>
@@ -105,14 +103,14 @@ export default function ContactForm() {
             <Select.Content
               position="popper"
               sideOffset={6}
-              className="z-[70] w-[var(--radix-select-trigger-width)] overflow-hidden rounded-lg border border-gris-claro/60 bg-blanco shadow-lg"
+              className="z-70 w-(--radix-select-trigger-width) overflow-hidden rounded-lg border border-gris-claro/60 bg-blanco shadow-lg"
             >
               <Select.Viewport className="p-1">
                 {servicios.map((s) => (
                   <Select.Item
                     key={s}
                     value={s}
-                    className="cursor-pointer rounded-md px-3 py-2 outline-none data-[highlighted]:bg-gris-claro/40 data-[state=checked]:font-medium"
+                    className="cursor-pointer rounded-md px-3 py-2 outline-none data-highlighted]:bg-gris-claro/40 data-[state=checked]:font-medium"
                   >
                     <Select.ItemText>{s}</Select.ItemText>
                   </Select.Item>

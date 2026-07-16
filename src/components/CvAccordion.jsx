@@ -1,17 +1,6 @@
 import * as Accordion from "@radix-ui/react-accordion";
 
-interface Item {
-  titulo: string;
-  empresa: string;
-  fecha: string;
-  detalle: string;
-}
-
-interface Props {
-  items: Item[];
-}
-
-export default function CvAccordion({ items }: Props) {
+export default function CvAccordion({ items }) {
   return (
     <Accordion.Root type="single" collapsible className="flex flex-col">
       {items.map((item, i) => (

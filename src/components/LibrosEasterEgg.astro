@@ -11,7 +11,7 @@ const isbns = [
   
 ];
 
-let libros: any[] = [];
+let libros = [];
 try {
   const bibkeys = isbns.map((isbn) => "ISBN:" + isbn).join(",");
   const respuesta = await fetch(
@@ -48,7 +48,7 @@ try {
 {/* Modal */}
 <div
   id="libros-modal"
-  class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-negro/50 p-6 backdrop-blur-sm"
+  class="fixed inset-0 z-60 hidden flex items-center justify-center bg-negro/50 p-6 backdrop-blur-sm"
 >
   <div
     class="relative max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-blanco p-8 shadow-xl"
@@ -112,12 +112,9 @@ try {
 
   toggle?.addEventListener("click", abrir);
   close?.addEventListener("click", cerrar);
-  // Cerrar al hacer click en el fondo (fuera de la tarjeta).
+  
+  // Cerrar al hacer click afuera
   modal?.addEventListener("click", (e) => {
     if (e.target === modal) cerrar();
-  });
-  // Cerrar con Escape.
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") cerrar();
   });
 </script>

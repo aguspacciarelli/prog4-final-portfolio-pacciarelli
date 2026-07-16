@@ -46,7 +46,19 @@
         },
         {
           "tipo": "iconos",
-          "titulo": "Softwares"
+          "titulo": "Softwares",
+          "iconos": [
+            { "src": "/toolbox/1-figma.png", "nombre": "Figma" },
+            { "src": "/toolbox/2-ps.png", "nombre": "Adobe Photoshop" },
+            { "src": "/toolbox/3-ai.png", "nombre": "Adobe Illustrator" },
+            { "src": "/toolbox/4-lightroom.png", "nombre": "Adobe Lightroom" },
+            { "src": "/toolbox/5-pr.png", "nombre": "Adobe Premiere Pro" },
+            { "src": "/toolbox/6-ae.png", "nombre": "Adobe After Effects" },
+            { "src": "/toolbox/7-capcut.png", "nombre": "CapCut" },
+            { "src": "/toolbox/8-notion.png", "nombre": "Notion" },
+            { "src": "/toolbox/9-miro.png", "nombre": "Miro" },
+            { "src": "/toolbox/10-trello.png", "nombre": "Trello" }
+          ]
         },
         {
           "tipo": "texto",

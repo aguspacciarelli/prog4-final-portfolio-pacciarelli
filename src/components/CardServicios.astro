@@ -1,22 +1,7 @@
 ---
 import servicios from "@/data/servicios.json";
 
-interface Servicio {
-  id: number;
-  imagen: string;
-  titulo: string;
-  subtitulo: string;
-  tituloItems: string;
-  items: string[];
-  tituloDescripcion: string;
-  descripcion: string;
-}
-
-interface Props {
-  cards?: Servicio[];
-}
-
-const { cards = servicios.servicios as Servicio[] } = Astro.props;
+const { cards = servicios.servicios } = Astro.props;
 ---
 
 <div
