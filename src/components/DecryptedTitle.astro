@@ -1,0 +1,19 @@
+---
+import DecryptedText from "@/components/DecryptedText.jsx";
+
+// Envuelve a DecryptedText reservando el ancho del texto final.
+// Sin esto, las letras aleatorias cambian el ancho del título en cada frame y,
+// como los títulos viven en una grilla `[1fr_auto]`, ese temblor se propaga a
+// la columna de al lado y hace re-wrapear los párrafos.
+const { text, ...opciones } = Astro.props;
+---
+
+<span class="relative inline-block">
+  {/* Copia invisible: no se ve, pero ocupa el lugar y fija el ancho y la línea base. */}
+  <span class="invisible" aria-hidden="true">{text}</span>
+
+  {/* La animación va encima, fuera del flujo, así no puede empujar nada. */}
+  <span class="absolute inset-0 whitespace-nowrap">
+    <DecryptedText client:load text={text} {...opciones} />
+  </span>
+</span>

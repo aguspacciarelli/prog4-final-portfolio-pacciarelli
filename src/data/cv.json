@@ -2,7 +2,7 @@
   "secciones": [
     {
       "titulo": "Educación",
-      "tipo": "acordeon",
+      "layout": "acordeon",
       "items": [
         {
           "titulo": "Licenciatura en Tecnología Multimedial",
@@ -14,7 +14,7 @@
     },
     {
       "titulo": "Experiencia laboral",
-      "tipo": "acordeon",
+      "layout": "acordeon",
       "items": [
         {
           "titulo": "Diseñadora Digital",
@@ -32,7 +32,7 @@
     },
     {
       "titulo": "Habilidades técnicas",
-      "tipo": "bloques",
+      "layout": "bloques",
       "items": [
         {
           "tipo": "texto",
@@ -69,7 +69,7 @@
     },
     {
       "titulo": "Certificados",
-      "tipo": "bloques",
+      "layout": "bloques",
       "items": [
         {
           "tipo": "link",
@@ -103,7 +103,7 @@
     },
     {
       "titulo": "Idiomas",
-      "tipo": "bloques",
+      "layout": "bloques",
       "items": [
         {
           "tipo": "texto",
